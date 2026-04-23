@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -28,6 +29,14 @@ public class VehiculoCombustible: Vehiculo
 
     public override double CalcularConsumo(double kilometros)
     {
-        return kilometros * kilometrosPorLitro;
+        double total = kilometros / kilometrosPorLitro;
+        int anioActual = DateTime.Now.Year;
+
+        if((anioActual - anio) > 5)
+        {
+            double extraPorAntiguedad = (kilometros / 15.0) * litrosExtra;
+            total = total + extraPorAntiguedad;
+        }
+        return total;
     }
 }
